@@ -26,7 +26,7 @@ export default function Layout({ children }: Props) {
               {routes.map((route) => (
                 <Link
                   key={route.path}
-                  className="text-neutral-400 font-semibold capitalize"
+                  className={`${pathName === route.path ? 'text-yellow-200' : 'text-neutral-400'} font-semibold capitalize`}
                   href={route.path}
                 >
                   {route.name}
