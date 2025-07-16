@@ -16,27 +16,29 @@ export default function Layout({ children }: Props) {
     <main className="bg-neutral-950 px-20 h-screen flex gap-5">
       <Aside />
 
-      <section className="flex flex-col w-3/4 px-4 py-5 bg-neutral-900 my-20 rounded-lg relative">
-        <header className="flex justify-between">
-          <h1 className="text-white text-3xl font-bold mb-3 capitalize">
-            {title}
-          </h1>
-          <nav className="absolute top-0 right-0 px-10 py-4 bg-neutral-800 rounded-bl-2xl border-b border-l border-neutral-700">
-            <ul className="flex gap-10">
-              {routes.map((route) => (
-                <Link
+      <div className="flex-1 py-20 overflow-auto scrollbar-hide">
+        <section className="flex flex-col px-8 pt-10 pb-12 bg-neutral-900 rounded-lg relative">
+          <header className="flex justify-between">
+            <h1 className="text-white text-3xl font-bold mb-3 capitalize">
+              {title}
+            </h1>
+            <nav className="absolute top-0 right-0 px-10 py-4 bg-neutral-800 rounded-bl-2xl border-b border-l border-neutral-700">
+              <ul className="flex gap-10">
+                {routes.map((route) => (
+                  <Link
                   key={route.path}
                   className={`${pathName === route.path ? 'text-yellow-200' : 'text-neutral-400'} font-semibold capitalize`}
                   href={route.path}
-                >
-                  {route.name}
-                </Link>
-              ))}
-            </ul>
-          </nav>
-        </header>
-        {children}
-      </section>
+                  >
+                    {route.name}
+                  </Link>
+                ))}
+              </ul>
+            </nav>
+          </header>
+          {children}
+        </section>
+      </div>
     </main>
   );
 }
