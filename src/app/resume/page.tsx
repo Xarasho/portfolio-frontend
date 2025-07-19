@@ -6,7 +6,7 @@ export default function Resume() {
   return (
     <Layout>
 
-      <section className="mt-10">
+      {/* <section className="mt-10">
         <article className="flex items-center gap-5 mb-10">
           <div className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl p-4 relative flex items-center justify-center">
             <span className="border-r border-neutral-700 w-[1px] h-10 absolute -bottom-10"></span>
@@ -17,7 +17,7 @@ export default function Resume() {
         <Achievement />
         <Achievement />
         <Achievement isLast={true} />
-      </section>
+      </section> */}
 
       <section className="mt-10">
         <article className="flex items-center gap-5">
