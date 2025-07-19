@@ -13,11 +13,11 @@ export default function Layout({ children }: Props) {
   const { title, routes } = useLayout(pathName);
 
   return (
-    <main className="bg-neutral-950 px-20 h-screen flex gap-5">
+    <main className="bg-neutral-950 px-48 h-screen flex gap-5">
       <Aside />
 
-      <div className="flex-1 py-20 overflow-auto scrollbar-hide">
-        <section className="flex flex-col px-8 pt-10 pb-12 bg-neutral-900 rounded-lg relative">
+      <div className="flex-1 py-14 overflow-auto scrollbar-hide">
+        <section className="flex flex-col px-8 pt-10 pb-12 bg-neutral-900 rounded-2xl border border-neutral-800 relative">
           <header className="flex justify-between">
             <h1 className="text-white text-3xl font-bold mb-3 capitalize">
               {title}
