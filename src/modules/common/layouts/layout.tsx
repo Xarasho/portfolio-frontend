@@ -4,6 +4,7 @@ import Aside from "../components/aside.component";
 import { usePathname } from "next/navigation";
 import { useLayout } from "../hooks/useLayout";
 
+
 interface Props {
   children: React.ReactNode;
 }
@@ -11,6 +12,8 @@ interface Props {
 export default function Layout({ children }: Props) {
   const pathName = usePathname();
   const { title, routes } = useLayout(pathName);
+
+  
 
   return (
     <main className="bg-neutral-950 px-48 h-screen flex gap-5">
@@ -26,9 +29,13 @@ export default function Layout({ children }: Props) {
               <ul className="flex gap-10">
                 {routes.map((route) => (
                   <Link
-                  key={route.path}
-                  className={`${pathName === route.path ? 'text-yellow-200' : 'text-neutral-400'} font-semibold capitalize`}
-                  href={route.path}
+                    key={route.path}
+                    className={`${
+                      pathName === route.path
+                        ? "text-yellow-200"
+                        : "text-neutral-400"
+                    } font-semibold capitalize`}
+                    href={route.path}
                   >
                     {route.name}
                   </Link>

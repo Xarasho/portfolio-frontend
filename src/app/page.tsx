@@ -1,22 +1,9 @@
-'use client'
+"use client";
 import Activity from "@/modules/common/activity/components/activity.component";
 import Layout from "@/modules/common/layouts/layout";
 import SoftSkill from "@/modules/soft-skill/components/soft-skill.component";
-import { useProfileStore } from "@/stores/profile.store";
-import { useEffect } from "react";
 
 export default function Home() {
-
-  const getProfile = useProfileStore( state => state.getProfile );
-
-  useEffect(() => {
-    const init = async () => {
-      await getProfile()
-    }
-    init();
-  })
-  
-
   return (
     <Layout>
       <section>

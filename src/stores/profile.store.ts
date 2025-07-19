@@ -22,8 +22,11 @@ export const useProfileStore = create<Store>()( set => ({
   profile: null,
   getProfile: async () => {
     try {
-      const profile = await axiosClient.get("/profile")
-      console.log(profile)
+      const { data } = await axiosClient.get<Profile>("/profile")
+      set({
+        profile: data
+      })
+      // console.log(data)
     } catch (e) {
       console.log(e)
     }
