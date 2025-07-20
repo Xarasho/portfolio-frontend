@@ -11,11 +11,13 @@ export const useResumeStore = create<Store>()( set => ({
   resume: null,
   getResume: async () => {
     try {
-      const { data } = await axiosClient.get('/resume');
-      console.log(data);
+      const { data } = await axiosClient.get<Resume>('/resume');
+      // console.log(data.content);
+      set({
+        resume: data
+      })
     } catch (error) {
       console.log(error);
     }
-
   }
 })) 
