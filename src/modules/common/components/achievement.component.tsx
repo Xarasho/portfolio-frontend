@@ -1,11 +1,13 @@
 'use client'
+import type { Achievement } from "@/types/achievement.interface";
 import React, { useEffect, useRef, useState } from "react";
 
 interface Props {
+  achievement: Achievement;
   isLast?: boolean
 }
 
-export default function Achievement({ isLast }: Props) {
+export default function Achievement({ achievement, isLast }: Props) {
   const achievementProperties = useRef<HTMLDivElement>(null);
   const [ spanHeight, setSpanHeight ] = useState(0);
 
@@ -18,7 +20,7 @@ export default function Achievement({ isLast }: Props) {
 
   return (
     <article className="flex gap-5 mt-5" ref={achievementProperties}>
-      <div className="flex items-center justify-center h-1 w-1 bg-yellow-200 p-1 rounded-full relative ml-3">
+      <div className="flex items-center justify-center h-1 w-1 bg-yellow-200 p-1 rounded-full relative ml-5">
         <span
           style={{ height: `${spanHeight + 10}px`, bottom: `-${spanHeight + 10}px` }}
           className={`${isLast && 'hidden'} border-r border-neutral-700 w-[1px] absolute -bottom-10`}
@@ -26,14 +28,11 @@ export default function Achievement({ isLast }: Props) {
       </div>
 
       <div>
-        <h2 className="text-white font-semibold">Title of education</h2>
+        <h2 className="text-white font-semibold">{achievement.name}</h2>
         <span
-          className="text-yellow-200">2019 - 2023</span>
+          className="text-yellow-200">{achievement.start} - {achievement.end}</span>
         <p className="text-white">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus
-          perferendis qui cupiditate ipsam aspernatur praesentium dolores rem
-          suscipit, pariatur quos soluta minus nobis amet nostrum accusantium
-          veritatis sequi. Distinctio, quae?
+          {achievement.content}
         </p>
       </div>
     </article>
