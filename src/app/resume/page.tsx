@@ -5,15 +5,19 @@ import Percentages from '../../modules/common/components/percentages.component';
 import { useIcons } from "@/modules/common/hooks/useIcons";
 import { useEducationStore } from "@/stores/education.store";
 import { useEffect } from "react";
+import { useExperienceStore } from "@/stores/experience.store";
 
 export default function Resume() {
   
   const { icons } = useIcons();
   const educationList = useEducationStore(state => state.education);
   const getEducationList = useEducationStore(state => state.getEducationList);
+  const experienceList = useExperienceStore(state => state.experience);
+  const getExperienceList = useExperienceStore(state => state.getExperience);
   
   useEffect(() => {
     getEducationList();
+    getExperienceList();
   }, [])
   
 
@@ -52,7 +56,13 @@ export default function Resume() {
           </div>
           <h2 className="text-2xl text-white font-semibold">Experience</h2>
         </article>
-
+            {
+              experienceList?.length === 0 
+                ? null
+                : experienceList.map((xp, i) => (
+                  <Achievement key={xp.id} achievement={xp} isLast={experienceList.length - 1 === i} />
+                ))
+            }
 
         {/* <Achievement />
         <Achievement /> */}
