@@ -6,6 +6,8 @@ import { useIcons } from "@/modules/common/hooks/useIcons";
 import { useEducationStore } from "@/stores/education.store";
 import { useEffect } from "react";
 import { useExperienceStore } from "@/stores/experience.store";
+import { useLanguageStore } from "@/stores/languages.store";
+import { useSkillStore } from "@/stores/skill.store";
 
 export default function Resume() {
   
@@ -14,10 +16,16 @@ export default function Resume() {
   const getEducationList = useEducationStore(state => state.getEducationList);
   const experienceList = useExperienceStore(state => state.experience);
   const getExperienceList = useExperienceStore(state => state.getExperience);
-  
+  const getLanguages = useLanguageStore(state => state.getLanguages);
+  const languages = useLanguageStore(state => state.languages);
+  const skills = useSkillStore(state => state.skills);
+  const getSkills = useSkillStore(state => state.getSkills);
+
   useEffect(() => {
     getEducationList();
     getExperienceList();
+    getLanguages();
+    getSkills();
   }, [])
   
 
@@ -70,18 +78,32 @@ export default function Resume() {
 
       <section className="mt-10">
         <h2 className="text-2xl text-white font-semibold">Languages</h2>
-        <article className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl p-4 flex flex-col mt-5"> 
-          <Percentages />
-          <Percentages />
+        <article className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl px-8 py-8 gap-8 flex flex-col mt-5"> 
+          {
+            languages?.length === 0
+              ? null
+              : languages.map((language) => (
+                <Percentages key={language.id} property={language} />
+              ))
+          }        
+          {/* <Percentages />
+          <Percentages /> */}
         </article>
       </section>
 
       <section className="mt-10">
         <h2 className="text-2xl text-white font-semibold">My Skills</h2>
-        <article className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl p-4 flex flex-col mt-5"> 
+        <article className="bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-xl px-8 py-8 gap-8 flex flex-col mt-5"> 
+          {
+            skills?.length === 0
+              ? null
+              : skills.map((skill) => (
+                <Percentages key={skill.id} property={skill} />
+              ))
+          }
+          {/* <Percentages />
           <Percentages />
-          <Percentages />
-          <Percentages />
+          <Percentages /> */}
         </article>
       </section>
     
